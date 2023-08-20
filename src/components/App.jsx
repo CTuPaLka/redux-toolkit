@@ -1,8 +1,12 @@
 import { useState } from "react";
 import RecipeItem from "./recipe-item/RecipeItem";
+import {BsFillBagHeartFill} from 'react-icons/bs'
+import Header from "./header/header";
 
 function App() {
   return (
+    <section>
+      <Header />
     <div>
       <RecipeItem recipe={{ 
         id: 1, 
@@ -14,6 +18,7 @@ function App() {
         id: 3, 
         name: "Фуагра" }} />
     </div>
+    </section>
   );
 }
 

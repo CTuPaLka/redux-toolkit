@@ -1,11 +1,16 @@
 // import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import css from './Recipe.module.css'
-import {actions} from '../store/favorites/favorites.slice' 
-import { useActions } from '../hooks/useActions';
+import {actions} from '../../store/favorites/favorites.slice' 
+import { useActions } from '../../hooks/useActions';
+import { useFavorites } from '../../hooks/useFavorites';
 
 const RecipeItem = ({recipe}) => {
-  const favorites = useSelector(state=> state.favorites);
+  // для оптимизации вынесем useSelector в отдельтный файл и будем использовать наш кастомный хук
+  // const favorites = useSelector(state=> state.favorites);
+
+  const favorites = useFavorites()
+
   // нам dispatch теперь не нужен из за создания кастомного хука useActions
   // const dispatch = useDispatch()
   const {toggleFavorites} = useActions()
