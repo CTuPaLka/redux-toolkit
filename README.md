@@ -1,8 +1,10 @@
-# React + Vite
+------------------------------------
+Чтобы открыть созданную нами базу данных в браузере , мы глобально установили 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+npm install -g json-server
 
-Currently, two official plugins are available:
+а затем запустил команду запуска json, где явно указали порт и имя файла, который нужно запустить
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+json-server db.json --port 4200 --watch
+
+-------------------------------------
