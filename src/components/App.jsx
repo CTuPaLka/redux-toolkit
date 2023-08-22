@@ -6,8 +6,15 @@ import User from "./user/User";
 import { useGetRecipesQuery } from "../store/api/api";
 import CreateRecipe from "./create-recipe/CreateRecipe";
 
+const userId = 1;
+
 function App() {
-  const { isLoading, data } = useGetRecipesQuery();
+  const { isLoading, data } = useGetRecipesQuery(
+	// такие conditions в хуках позволяют не выводить какие то данные, если срабатывает условие в нем
+	undefined, {
+    // ! конкретно данное выражение skip принимает условие, при котором запрос useGetRecipesQuery выполнятся не будет. Там также много разных других выражений]
+    skip: !userId,
+  });
 
   return (
     <section>
