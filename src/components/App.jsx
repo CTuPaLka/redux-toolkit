@@ -4,6 +4,7 @@ import { BsFillBagHeartFill } from "react-icons/bs";
 import Header from "./header/header";
 import User from "./user/User";
 import { useGetRecipesQuery } from "../store/api/api";
+import CreateRecipe from "./create-recipe/CreateRecipe";
 
 function App() {
   const { isLoading, data } = useGetRecipesQuery();
@@ -11,6 +12,7 @@ function App() {
   return (
     <section>
       <Header />
+      <CreateRecipe />
       {/* <User /> */}
 
       {isLoading ? (
@@ -20,27 +22,6 @@ function App() {
       ) : (
         <div>Not found</div>
       )}
-
-      <div>
-        <RecipeItem
-          recipe={{
-            id: 1,
-            name: "Плов",
-          }}
-        />
-        <RecipeItem
-          recipe={{
-            id: 2,
-            name: "Жульен",
-          }}
-        />
-        <RecipeItem
-          recipe={{
-            id: 3,
-            name: "Фуагра",
-          }}
-        />
-      </div>
     </section>
   );
 }
