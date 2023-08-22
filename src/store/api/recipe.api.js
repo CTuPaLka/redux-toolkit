@@ -11,6 +11,9 @@ export const recipeApi = api.injectEndpoints({
 				url: '/',
 				method: 'POST',
 			}),
+			invalidatesTags:()=>[{
+				type: "Recipe",
+			}]
 		})
 	})
 })
