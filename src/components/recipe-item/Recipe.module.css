@@ -4,3 +4,6 @@
     margin: 10px;
     padding: 10px;
 }
+.item img{
+	border-radius: 5px;
+}
