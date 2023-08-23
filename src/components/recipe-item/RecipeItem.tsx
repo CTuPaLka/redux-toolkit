@@ -4,8 +4,13 @@ import css from "./Recipe.module.css";
 import { actions } from "../../store/favorites/favorites.slice";
 import { useActions } from "../../hooks/useActions";
 import { useFavorites } from "../../hooks/useFavorites";
+import { IRecipe } from "../../types/recipe.types";
 
-const RecipeItem = ({ recipe }) => {
+interface IRecipeItem{
+	recipe: IRecipe
+}
+
+const RecipeItem = ({ recipe }: IRecipeItem) => {
   // для оптимизации вынесем useSelector в отдельтный файл и будем использовать наш кастомный хук
   // const favorites = useSelector(state=> state.favorites);
 

@@ -1,12 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IRecipe } from "../../types/recipe.types";
 
-const initialState = [];
+const initialState: IRecipe[] = [];
 
 export const favoriteSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    toggleFavorites: (state, { payload }) => {
+    toggleFavorites: (state, { payload }: PayloadAction<IRecipe>) => {
       // в качекстве action.payload передавать будем избранный рецепт
       const recipe = payload;
       const isExist = state.some((r) => r.id === recipe.id);

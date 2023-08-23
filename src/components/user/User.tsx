@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const User = () => {
-  const { isLoading, error, users } = useSelector((state) => state.users);
+  const { isLoading, error, users } = useTypedSelector((state) => state.users);
 
   const { getUsersById } = useActions();
 
