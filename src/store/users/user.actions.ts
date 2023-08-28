@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { IUser } from "../../types/user.types";
 
 const fetchUsersById = (userId: number): Promise<IUser> =>
   new Promise((resolve) =>

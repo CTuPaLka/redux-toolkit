@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { useCreateNewRecipeMutation } from "../../store/api/recipe.api";
+import { recipeApi, useCreateNewRecipeMutation } from "../../store/api/recipe.api";
 import { IRecipeData } from "../../types/recipe.types";
 
 const defaultValue: IRecipeData = {
-name: "",
-image: "",
-}
+  name: "",
+  image: "",
+};
 
 const CreateRecipe = () => {
   const [recipe, setRecipe] = useState<IRecipeData>(defaultValue);
 
-  const [createNewRecipe] = useCreateNewRecipeMutation();
+//   const [createNewRecipe] = useCreateNewRecipeMutation();
+const [createNewRecipe] = useCreateNewRecipeMutation()
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> | undefined = (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> | undefined = (
+    e
+  ) => {
     e.preventDefault();
     createNewRecipe(recipe).then(() => {
       setRecipe(defaultValue);

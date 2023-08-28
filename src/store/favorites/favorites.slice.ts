@@ -14,9 +14,10 @@ export const favoriteSlice = createSlice({
       console.log(state);
       if (isExist) {
         const index = state.findIndex((item) => item.id === recipe.id);
-      if(index !== -1){
-        state.splice(index, 1)
-      }} else state.push(recipe);
+        if (index !== -1) {
+          state.splice(index, 1);
+        }
+      } else state.push(recipe);
     },
     // ! тоже самое, что и ввыше метод, только переменную recipeId сразу обьявили в параметрах метода
     // toggleFavorites: (state, {payload: recipe})=>{

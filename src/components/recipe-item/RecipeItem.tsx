@@ -5,20 +5,44 @@ import { actions } from "../../store/favorites/favorites.slice";
 import { useActions } from "../../hooks/useActions";
 import { useFavorites } from "../../hooks/useFavorites";
 import { IRecipe } from "../../types/recipe.types";
+import {
+  useDeleteRecipeMutation,
+  useUpdateRecipeMutation,
+} from "../../store/api/recipe.api";
 
-interface IRecipeItem{
-	recipe: IRecipe
+interface IRecipeItem {
+  recipe: IRecipe;
+  updateRecipe: (recipe: IRecipe) => void;
+  deleteRecipe: (recipe: IRecipe) => void;
 }
 
-const RecipeItem = ({ recipe }: IRecipeItem) => {
-  // для оптимизации вынесем useSelector в отдельтный файл и будем использовать наш кастомный хук
-  // const favorites = useSelector(state=> state.favorites);
-
+const RecipeItem = ({ recipe, updateRecipe, deleteRecipe }: IRecipeItem) => {
   const favorites = useFavorites();
 
   // нам dispatch теперь не нужен из за создания кастомного хука useActions
   // const dispatch = useDispatch()
+
   const { toggleFavorites } = useActions();
+
+  const localToggleFavorites = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+    toggleFavorites(recipe);
+  };
+
+  const localDeleteRecipe = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+    deleteRecipe(recipe);
+  };
+
+  const localUpdateRecipe = () => {
+	  console.log(recipe);
+    const name = prompt() || "";
+    updateRecipe({...recipe, name});
+  };
 
   console.log(favorites);
 
@@ -26,12 +50,13 @@ const RecipeItem = ({ recipe }: IRecipeItem) => {
   const isExist = favorites.some((r) => r.id === recipe.id);
 
   return (
-    <div className={css.item}>
-      <img src={recipe.image} alt={recipe.name} width={100} />
+    <div className={css.item} onClick={() => localUpdateRecipe()}>
+      <img src={recipe.image} alt={recipe.image} width={100} />
       <h2>{recipe.name}</h2>
-      <button onClick={() => toggleFavorites(recipe)}>
+      <button onClick={(e) => localToggleFavorites(e)}>
         {isExist ? "Remove from" : "Add to"} favorites
       </button>
+      <button onClick={(e) => localDeleteRecipe(e)}>Remove Recipe</button>
     </div>
   );
 };
